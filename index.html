@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Orbit Satelit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Simulasi Orbit Satelit</h1>
+    </header>
+    <main>
+        <section id="description">
+            <h2>122290075 / Victorio Purba</h2>
+        </section>
+        <section id="description">
+            <h2>Pendahuluan</h2>
+            <p>Simulasi ini memvisualisasikan orbit satelit mengelilingi Bumi menggunakan metode numerik orde-4 Runge-Kutta. Perhitungan mempertimbangkan gaya gravitasi dan parameter orbit realistis untuk satelit geostasioner.</p>
+            <p>Lingkaran biru di tengah mewakili Bumi, dan titik merah mewakili satelit di orbit.</p>
+        </section>
+        <section id="runge-kutta">
+            <h2>Metode Runge-Kutta Orde 4</h2>
+            <p>Metode Runge-Kutta orde-4 (RK4) adalah teknik numerik yang digunakan untuk menyelesaikan persamaan diferensial biasa. Dalam simulasi ini, RK4 diterapkan untuk menghitung posisi dan kecepatan satelit dari waktu ke waktu di bawah pengaruh gaya gravitasi Bumi.</p>
+            <p>RK4 menggunakan rumus berikut untuk memperkirakan keadaan sistem selanjutnya:</p>
+            <div class="equations">
+                <p><strong>k<sub>1</sub> = f(t, y)</strong></p>
+                <p><strong>k<sub>2</sub> = f(t + 0.5Δt, y + 0.5k<sub>1</sub>Δt)</strong></p>
+                <p><strong>k<sub>3</sub> = f(t + 0.5Δt, y + 0.5k<sub>2</sub>Δt)</strong></p>
+                <p><strong>k<sub>4</sub> = f(t + Δt, y + k<sub>3</sub>Δt)</strong></p>
+                <p><strong>y(t + Δt) ≈ y(t) + (Δt/6)(k<sub>1</sub> + 2k<sub>2</sub> + 2k<sub>3</sub> + k<sub>4</sub>)</strong></p>
+            </div>
+            <p>Dimana, <code>y</code> mewakili keadaan sistem (posisi dan kecepatan satelit), <code>t</code> adalah waktu, and <code>Δt</code> adalah time step.</p>
+            <p>Dalam konteks simulasi, gaya gravitasi yang bekerja pada satelit diberikan oleh:</p>
+            <div class="equations">
+                <p><strong>F = -GMm / r<sup>2</sup></strong></p>
+                <p><strong>F<sub>x</sub> = F * (x / r)</strong></p>
+                <p><strong>F<sub>y</sub> = F * (y / r)</strong></p>
+            </div>
+            <p>Where:</p>
+            <ul>
+                <li><strong>G</strong>: Gravitational constant (6.67430 × 10<sup>-11</sup> m<sup>3</sup> kg<sup>-1</sup> s<sup>-2</sup>)</li>
+                <li><strong>M</strong>: Massa Bumi (5.972 × 10<sup>24</sup> kg)</li>
+                <li><strong>m</strong>: Massa satelit</li>
+                <li><strong>r</strong>: Jarak antara satelit dengan pusat Bumi</li>
+                <li><strong>(x, y)</strong>: Position satelit</li>
+            </ul>
+            <p>Metode RK4 mengintegrasikan gaya ini untuk memperbarui posisi dan kecepatan satelit dari waktu ke waktu.</p>
+        </section>
+        <section id="simulation">
+            <canvas id="satelliteCanvas" width="600" height="600"></canvas>
+            <button id="simulateButton">Mulai Simulasi</button>
+        </section>
+        <section id="instructions">
+            <h2>How to Use</h2>
+            <ol>
+                <li>Klik tombol  "Mulai Simulasi" untuk memulai simulasi.</li>
+                <li>Amati satelit saat bergerak di sepanjang jalur orbitnya mengelilingi Bumi.</li>
+                <li>Refresh halaman web untuk memulai simulasi dari awal.</li>
+            </ol>
+        </section>
+        <section id="details">
+            <h2>Technical Details</h2>
+            <p>Berikut beberapa parameter yang ada pasa simulasi ini:</p>
+            <ul>
+                <li>Gravitational constant   (G): 6.67430 x 10<sup>-11</sup> m<sup>3</sup> kg<sup>-1</sup> s<sup>-2</sup></li>
+                <li>Earth's mass             (M): 5.972 x 10<sup>24</sup> kg</li>
+                <li>Earth's radius           (R): 6,371 km</li>
+                <li>Geostationary orbit distance: 35,786 km di atas permukaan Buni</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; Simulasi Orbit Satelit  / 122290075_Victorio Purba</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
